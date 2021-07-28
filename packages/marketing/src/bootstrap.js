@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
-import App from "./App";
+import App from "./app";
 
 // mount function
 function mount(el, { onNavigate, defaultHistory, initialPath }) {
