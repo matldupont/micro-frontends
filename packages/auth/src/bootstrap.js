@@ -14,12 +14,10 @@ function mount(el, { onSignIn, onNavigate, defaultHistory, initialPath }) {
   if (onNavigate) {
     history.listen(onNavigate);
   }
-  console.log("mount on", el);
   ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
 
   return {
     onParentNavigate({ pathname: nextPathname }) {
-      console.log("Auth - Container navigated", nextPathname);
       const { pathname } = history.location;
       if (pathname !== nextPathname) {
         history.push(nextPathname);
@@ -30,10 +28,8 @@ function mount(el, { onSignIn, onNavigate, defaultHistory, initialPath }) {
 
 // dev (isolation) mount immediately
 if (process.env.NODE_ENV === "development") {
-  console.log("HERE");
   const devRoot = document.querySelector("#_auth-dev-root");
   if (devRoot) {
-    console.log("???");
     mount(devRoot, { defaultHistory: createBrowserHistory() });
   }
 }
