@@ -14,7 +14,7 @@ const generateClassName = createGenerateClassName({
   productionPrefix: "cntnr",
 });
 
-export function App() {
+export default function App() {
   const [isSignedIn, setIsSignedIn] = React.useState(false);
 
   return (
