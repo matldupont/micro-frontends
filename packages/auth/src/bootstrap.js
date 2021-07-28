@@ -1,7 +1,7 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
-import { App } from "./App";
+import App from "./App";
 
 // mount function
 function mount(el, { onSignIn, onNavigate, defaultHistory, initialPath }) {
@@ -14,7 +14,7 @@ function mount(el, { onSignIn, onNavigate, defaultHistory, initialPath }) {
   if (onNavigate) {
     history.listen(onNavigate);
   }
-
+  console.log("mount on", el);
   ReactDOM.render(<App onSignIn={onSignIn} history={history} />, el);
 
   return {
@@ -30,8 +30,10 @@ function mount(el, { onSignIn, onNavigate, defaultHistory, initialPath }) {
 
 // dev (isolation) mount immediately
 if (process.env.NODE_ENV === "development") {
+  console.log("HERE");
   const devRoot = document.querySelector("#_auth-dev-root");
   if (devRoot) {
+    console.log("???");
     mount(devRoot, { defaultHistory: createBrowserHistory() });
   }
 }
